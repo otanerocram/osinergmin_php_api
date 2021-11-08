@@ -17,7 +17,7 @@
 		die('Error de conectando a la base de datos: ' . $conexion->connect_error);
 	}
 
-	$sqlQuery 	= "SELECT `id`, `event`, `plate`, `speed`, `latitude`, `longitude`, `gpsDate`, `odometer`, `sent`, `accountID` FROM `Osinergmin` WHERE `sent`=0 ORDER BY id DESC LIMIT 1;";
+	$sqlQuery 	= "SELECT `id`, `event`, `plate`, `speed`, `latitude`, `longitude`, `gpsDate`, `odometer`, `sent`, `accountID` FROM `Osinergmin` WHERE `sent`=0 ORDER BY id DESC LIMIT 10;";
 	
 	$resultado 	= $conexion->query($sqlQuery);
 	

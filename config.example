@@ -4,6 +4,13 @@
 	$db_pass	= 'gts_pass';
 	$db_name	= 'gts';
 	$db_port	= 3306;
-    $token      = "XXX"
-    $endpoint   = "https://prod.osinergmin-agent-2021.com/api/v1/trama"
+    $token      = "XXX";
+    $endpoint   = "https://prod.osinergmin-agent-2021.com/api/v1/trama";
+
+     /*
+    CRONTAB:
+    
+    * * * * * wget -O - http://mundosgps.com/osinergmin_php_api-main/consumer.php >/dev/null 2>&1
+
+    */
 ?>
