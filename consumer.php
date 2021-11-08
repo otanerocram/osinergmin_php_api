@@ -17,7 +17,7 @@
 		die('Error de conectando a la base de datos: ' . $conexion->connect_error);
 	}
 
-	$sqlQuery 	= "SELECT `id`, `event`, `plate`, `speed`, `latitude`, `longitude`, `gpsDate`, `odometer`, `sent`, `accountID` FROM `Osinergmin` WHERE `sent`=0 ORDER BY id DESC LIMIT 1;";
+	$sqlQuery 	= "SELECT `id`, `event`, `plate`, `speed`, `latitude`, `longitude`, `gpsDate`, `odometer`, `sent`, `accountID` FROM `Osinergmin` WHERE `sent`=0 ORDER BY id DESC LIMIT 10;";
 	
 	$resultado 	= $conexion->query($sqlQuery);
 	
@@ -104,7 +104,6 @@
     $max = sizeof($post);
 
     for ($i = 0; $i < $max; $i++) {
-
         print_r("<br/>");
         print_r(json_encode($post[$i]));
         print_r("<br/>");
@@ -130,7 +129,5 @@
         if ($err) {
             die("cURL Error #:" . $err);
         }
-
-        // DONT go to the next loop until the above data is complete or returns true
       }
 ?>
