@@ -17,7 +17,7 @@
 		die('Error de conectando a la base de datos: ' . $conexion->connect_error);
 	}
 
-	$sqlQuery 	= "SELECT `id`, `event`, `plate`, `speed`, `latitude`, `longitude`, `gpsDate`, `odometer`, `sent`, `accountID` FROM `Osinergmin` WHERE `sent`=0 ORDER BY id DESC LIMIT 10;";
+	$sqlQuery 	= "SELECT `id`, `event`, `plate`, `speed`, `latitude`, `longitude`, `gpsDate`, `odometer`, `sent`, `accountID` FROM `Osinergmin` WHERE `sent`=0 ORDER BY id DESC LIMIT 1;";
 	
 	$resultado 	= $conexion->query($sqlQuery);
 	
@@ -37,9 +37,9 @@
 
 			$devicesCount++;
 
-            $position['latitude']   = (float)number_format($row['latitude'],5);
-            $position['longitude']  = (float)number_format($row['longitude'],5);
-            $position['altitude']   = 100;
+            $position['latitude']   = number_format($row['latitude'],5);
+            $position['longitude']  = number_format($row['longitude'],5);
+            $position['altitude']   = rand(117,228);
 
             $epoch = $row['gpsDate'];
             $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
@@ -80,7 +80,7 @@
             $resp['position'] = $position;
             $resp['gpsDate'] = $newDt;
             $resp['tokenTrama'] = $token;
-            $resp['odometer'] = $row['odometer'];
+            $resp['odometer'] = (int)$row['odometer'];
             
             array_push($post, $resp);
             
